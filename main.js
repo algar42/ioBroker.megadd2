@@ -945,7 +945,7 @@ function getPortStateI2C(port, callback) {
             if (sensor[i].indexOf('BMP180') !== -1) {
                 data = [{name: 'pressure', dev: 'bmp180'}, {name: 'temperature', dev: 'bmp180&i2c_par=1'}];
             }
-            if (sensor[i].indexOf('BMX280') !== -1) {
+            if (sensor[i].indexOf('BMx280') !== -1) {
                 data = [{name: 'pressure', dev: 'bmx280'}, {
                     name: 'temperature',
                     dev: 'bmx280&i2c_par=1'
@@ -971,7 +971,7 @@ function getPortStateI2C(port, callback) {
                 if (config.d === 20) test = 'MCP230XX';
                 if (config.d === 21) test = 'PCA9685';
 
-                if (sensor[i] === test) {
+                if (sensor[i] != test) {
                     continue;
                 }
 
@@ -2325,7 +2325,7 @@ function syncObjects() {
 
                     for (const i in sensor)
                         if (sensor) {
-                            if (sensor[i] == test) continue;
+                            if (sensor[i] != test) continue;
 
                             // Light Sensors  // settings.d == 2 || settings.d == 3 || settings.d == 7
                             if (sensor[i].indexOf('BH1750') !== -1) {
@@ -2576,7 +2576,7 @@ function syncObjects() {
                                     },
                                     type: 'state'
                                 };
-                            } else if (sensor[i].indexOf('BMX280') !== -1) {
+                            } else if (sensor[i].indexOf('BMx280') !== -1) {
                                 obj30 = {
                                     _id: adapter.namespace + '.' + id + '_' + sensor[i] + '_pressure',
                                     common: {
